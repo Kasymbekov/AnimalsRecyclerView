@@ -118,9 +118,10 @@ class MainActivity : AppCompatActivity(), OnItemClick {
     }
 
     override fun onItemClick(position: Int) {
-        var alert: AlertDialog.Builder = AlertDialog.Builder(this)
+        val alert: AlertDialog.Builder = AlertDialog.Builder(this)
         alert.setTitle("Delete item")
         alert.setMessage("Are you sure you want to delete this item?")
+        alert.setIcon(R.drawable.ic_delete)
         alert.setPositiveButton("Yes") { dialog, which ->
             Toast.makeText(
                 this,
