@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.animalsrecyclerview.databinding.ItemAnimalBinding
 import java.util.ArrayList
 
-class AnimalAdapter(private val data: ArrayList<Animal>, private val onItemClick: OnItemClick) :
+class AnimalAdapter(private val data: ArrayList<Animal>, private val onItemLongClick: OnItemLongClick) :
     RecyclerView.Adapter<AnimalAdapter.AnimalViewHolder>() {
     private var count: Int = 1
 
@@ -22,8 +22,9 @@ class AnimalAdapter(private val data: ArrayList<Animal>, private val onItemClick
 
     override fun onBindViewHolder(holder: AnimalViewHolder, position: Int) {
         holder.bind(data.get(position))
-        holder.itemView.setOnClickListener {
-            onItemClick.onItemClick(position)
+        holder.itemView.setOnLongClickListener {
+            onItemLongClick.onItemLongClick(position)
+            true
         }
     }
 

@@ -1,13 +1,12 @@
 package com.example.animalsrecyclerview
 
-import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.animalsrecyclerview.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity(), OnItemClick {
+class MainActivity : AppCompatActivity(), OnItemLongClick {
     private lateinit var binding: ActivityMainBinding
     private val list: ArrayList<Animal> = ArrayList()
 
@@ -117,9 +116,11 @@ class MainActivity : AppCompatActivity(), OnItemClick {
 
     }
 
-    override fun onItemClick(position: Int) {
+    override fun onItemLongClick(position: Int) {
         val alert: AlertDialog.Builder = AlertDialog.Builder(this)
         alert.setTitle("Delete item")
+        //method below is designed so that the user can't close dialog anywhere on the screen
+        alert.setCancelable(false)
         alert.setMessage("Are you sure you want to delete this item?")
         alert.setIcon(R.drawable.ic_delete)
         alert.setPositiveButton("Yes") { dialog, which ->
